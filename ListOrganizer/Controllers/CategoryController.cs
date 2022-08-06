@@ -29,23 +29,5 @@ namespace ListOrganizer.API.Controllers
         {
             return _categoryRepo.GetCategory(id);
         }
-
-        // POST api/<CategoryController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<CategoryController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<CategoryController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

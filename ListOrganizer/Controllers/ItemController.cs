@@ -19,8 +19,6 @@ namespace ListOrganizer.API.Controllers
             _itemRepo = itemRepo;
         }
 
-
-
         // GET: api/<ItemsController>
         [HttpGet]
         public IEnumerable<Item> Get()
@@ -33,24 +31,6 @@ namespace ListOrganizer.API.Controllers
         public Item Get(int id)
         {
             return _itemRepo.GetItem(id);
-        }
-
-        // POST api/<ItemsController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<ItemsController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<ItemsController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }
