@@ -1,4 +1,7 @@
 ﻿using ListOrganizer.Repo.Model;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
 
 namespace ListOrganizer.Repo
 {
@@ -12,6 +15,11 @@ namespace ListOrganizer.Repo
         public readonly static DateTime MinDateSQL = new DateTime(1900, 1, 1);
         public readonly static DateTime MaxDateSQL = new DateTime(2100, 1, 1);
 
+        public BaseRepo(DbContextOptions<ItemInventoryContext> options)
+        {
+            db = new ItemInventoryContext(options);
+        }
+
         public ItemInventoryContext Db
         {
             get { return db ?? (db = new ItemInventoryContext()); }
@@ -24,24 +32,26 @@ namespace ListOrganizer.Repo
             {
                 Db.SaveChanges();
             }
-            //catch (DbEntityValidationException eve)
-            //{
-            //    var sb = new StringBuilder();
-            //    foreach (var ve in eve.EntityValidationErrors)
-            //    {
-            //        sb.AppendLine(
-            //            string.Format("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-            //                ve.Entry.Entity.GetType().Name, ve.Entry.State));
+            catch (DbUpdateException eve)
+            {
+                var sb = new StringBuilder();
+                foreach (var ve in eve.Entries)
+                {
+                    sb.AppendLine(
+                        string.Format("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                            ve.Entity.GetType().Name, ve.State));
 
-            //        foreach (var verr in ve.ValidationErrors)
-            //        {
-            //            sb.AppendLine(string.Format("- Property: \"{0}\", Error: \"{1}\"", verr.PropertyName,
-            //                verr.ErrorMessage));
-            //        }
-            //    }
-            //    Error = sb.ToString();
-            //    return false;
-            //}
+                    var validationResults = new List<ValidationResult>();
+                    Validator.TryValidateObject(ve, new ValidationContext(ve), validationResults);
+
+                    foreach (var verr in validationResults)
+                    {
+                        sb.AppendLine(string.Format("- Error: \"{0}\"", verr.ErrorMessage));
+                    }
+                }
+                Error = sb.ToString();
+                return false;
+            }
             catch (Exception e)
             {
                 Error = e.Message;

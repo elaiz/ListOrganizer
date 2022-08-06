@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListOrganizer.API", "ListOrganizer\ListOrganizer.API.csproj", "{F1C82491-7136-46D4-A1A5-789EC54DA2E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListOrganizer.API", "ListOrganizer\ListOrganizer.API.csproj", "{F1C82491-7136-46D4-A1A5-789EC54DA2E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListOrganizer.Repo", "ListOrganizer.Repo\ListOrganizer.Repo.csproj", "{53B05C1C-7434-4920-B51C-B1C3F7B68B2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListOrganizer.Repo", "ListOrganizer.Repo\ListOrganizer.Repo.csproj", "{53B05C1C-7434-4920-B51C-B1C3F7B68B2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListOrganizer.Api.Tests", "ListOrganizer.Api.Tests\ListOrganizer.Api.Tests.csproj", "{D749638B-BEF4-4815-BCAA-66CB77636ECE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListOrganizer.Api.Tests", "ListOrganizer.Api.Tests\ListOrganizer.Api.Tests.csproj", "{D749638B-BEF4-4815-BCAA-66CB77636ECE}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ListOrganizer.Database", "ListOrganizer.Database\ListOrganizer.Database.sqlproj", "{066AED8C-0764-4F5E-A383-EA44B9184E59}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListOrganizer.Lib", "ListOrganizer.Lib\ListOrganizer.Lib.csproj", "{058951C6-8D93-4BA9-B4ED-62FBA64395BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{066AED8C-0764-4F5E-A383-EA44B9184E59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{066AED8C-0764-4F5E-A383-EA44B9184E59}.Release|Any CPU.Build.0 = Release|Any CPU
 		{066AED8C-0764-4F5E-A383-EA44B9184E59}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{058951C6-8D93-4BA9-B4ED-62FBA64395BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{058951C6-8D93-4BA9-B4ED-62FBA64395BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{058951C6-8D93-4BA9-B4ED-62FBA64395BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{058951C6-8D93-4BA9-B4ED-62FBA64395BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

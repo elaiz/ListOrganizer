@@ -1,4 +1,5 @@
 ﻿using ListOrganizer.Repo.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,10 @@ namespace ListOrganizer.Repo
 {
     public class ItemRepo : BaseRepo, IItemRepo
     {
+        public ItemRepo(DbContextOptions<ItemInventoryContext> options) : base(options)
+        {
+        }
+
         public Item GetItem(int id)
         {
             return Db.Items.Find(id);
