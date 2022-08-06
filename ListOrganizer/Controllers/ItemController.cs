@@ -30,9 +30,9 @@ namespace ListOrganizer.API.Controllers
 
         // GET api/<ItemsController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Item Get(int id)
         {
-            return "value";
+            return _itemRepo.GetItem(id);
         }
 
         // POST api/<ItemsController>

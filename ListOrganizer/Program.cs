@@ -1,7 +1,6 @@
 using ListOrganizer.Repo;
 using ListOrganizer.Repo.Model;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.SqlServer;
 
 
 var builder = WebApplication.CreateBuilder(args);
