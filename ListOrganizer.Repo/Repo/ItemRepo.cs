@@ -1,10 +1,5 @@
 ﻿using ListOrganizer.Repo.Model;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ListOrganizer.Repo
 {
@@ -27,6 +22,22 @@ namespace ListOrganizer.Repo
         public IEnumerable<Item> GetItemsByCategory(int categoryId)
         {
             return Db.Items.Where(x => x.CategoryId.Equals(categoryId));
+        }
+
+        public bool Save(Item item)
+        {
+            if (item.Id <= 0)
+            {
+                var save = Db.Items.Add(item);
+            }
+            else
+            {
+                Db.Items.Attach(item);
+                Db.Entry(item).State = EntityState.Modified;
+            }
+
+
+            return Db.SaveChanges() > 0;
         }
     }
 }

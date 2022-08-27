@@ -8,11 +8,11 @@ namespace ListOrganizer.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoryController : ControllerBase
+    public class ReadCategoryController : ControllerBase
     {
         private readonly ICategoryRepo _categoryRepo;
 
-        public CategoryController(ICategoryRepo categoryRepo)
+        public ReadCategoryController(ICategoryRepo categoryRepo)
         {
             _categoryRepo = categoryRepo;
         }
@@ -28,6 +28,29 @@ namespace ListOrganizer.API.Controllers
         public Category Get(int id)
         {
             return _categoryRepo.GetCategory(id);
+        }
+    }
+
+    [Route("api/[controller]")]
+    [ApiController]
+    public class WriteCategoryController : ControllerBase
+    {
+        private readonly ICategoryRepo _categoryRepo;
+
+        public WriteCategoryController(ICategoryRepo categoryRepo)
+        {
+            _categoryRepo = categoryRepo;
+        }
+
+        [HttpPost]
+        public int Save(Category category)
+        {
+            if(_categoryRepo.Save(category))
+            {
+                return category.Id;
+            }
+
+            return -1;
         }
     }
 }

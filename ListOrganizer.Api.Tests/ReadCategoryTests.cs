@@ -1,15 +1,15 @@
 namespace ListOrganizer.Api.Tests
 {
     [TestClass]
-    public class CategoryTests
+    public class ReadCategoryTests
     {
         private int categoryId = 1;
 
         private Mock<ICategoryRepo> GetRepo()
         {
             var category = new Category { Id = categoryId, Description = "Description", Name = "Category Name" };
-            var categoryList = new List<Category> { category } ;
-            
+            var categoryList = new List<Category> { category };
+
             var repo = new Mock<ICategoryRepo>();
             repo.Setup(x => x.GetCategories()).Returns(categoryList);
             repo.Setup(x => x.GetCategory(categoryId)).Returns(category);
@@ -17,10 +17,10 @@ namespace ListOrganizer.Api.Tests
             return repo;
         }
 
-        private CategoryController GetController()
+        private ReadCategoryController GetController()
         {
             var repo = GetRepo();
-            return new CategoryController(repo.Object);
+            return new ReadCategoryController(repo.Object);
         }
 
         [TestMethod]

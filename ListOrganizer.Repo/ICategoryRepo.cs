@@ -7,5 +7,6 @@ namespace ListOrganizer.Repo
     {
         public Category GetCategory(int id);
         public IEnumerable<Category> GetCategories();
+        public bool Save(Category category);
     }
 }

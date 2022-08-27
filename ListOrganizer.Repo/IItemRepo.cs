@@ -7,5 +7,7 @@ namespace ListOrganizer.Repo
         public Item GetItem(int id);
         public IEnumerable<Item> GetItems();
 
+        public bool Save(Item item);
+
     }
 }

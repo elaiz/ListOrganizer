@@ -3,7 +3,7 @@
 namespace ListOrganizer.Api.Tests
 {
     [TestClass]
-    public class ItemTest
+    public class ReadItemTest
     {
         private int itemId = 1;
 
@@ -19,9 +19,9 @@ namespace ListOrganizer.Api.Tests
             return repo;
         }
 
-        public ItemController GetController()
+        public ReadItemController GetController()
         {
-            return new ItemController(GetRepo().Object);
+            return new ReadItemController(GetRepo().Object);
         }
 
         [TestMethod]

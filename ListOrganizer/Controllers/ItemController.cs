@@ -8,13 +8,12 @@ namespace ListOrganizer.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ItemController : ControllerBase
+    public class ReadItemController : ControllerBase
     {
 
         private readonly IItemRepo _itemRepo;
 
-
-        public ItemController(IItemRepo itemRepo)
+        public ReadItemController(IItemRepo itemRepo)
         {
             _itemRepo = itemRepo;
         }
@@ -31,6 +30,36 @@ namespace ListOrganizer.API.Controllers
         public Item Get(int id)
         {
             return _itemRepo.GetItem(id);
+        }
+
+        [Route("api/[controller]")]
+        [ApiController]
+        public class WriteItemController : ControllerBase
+        {
+
+            private readonly IItemRepo _itemRepo;
+
+
+            public WriteItemController(IItemRepo itemRepo)
+            {
+                _itemRepo = itemRepo;
+            }
+
+            /// <summary>
+            /// Save an item
+            /// </summary>
+            /// <param name="item"></param>
+            /// <returns>The id of the item saved</returns>
+            [HttpPost]
+            public int Save(Item item)
+            {
+                if (_itemRepo.Save(item))
+                {
+                    return item.Id;
+                }
+
+                return -1;
+            }
         }
     }
 }
